@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ public class GeneroResource {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@PreAuthorize("hasAuthority('ROLE_INCLUIR_GENERO')")
 	public Genero inserir(@RequestBody @Valid Genero genero,
 			HttpServletResponse response) {
 
@@ -49,18 +51,21 @@ public class GeneroResource {
 	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
+	@PreAuthorize("hasAuthority('ROLE_LISTAR_GENERO')")
 	public List<Genero> listar() {
 		return service.listar();
 	}
 	
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_POR_ID_GENERO')")
 	public Genero pesquisarPorId(@PathVariable("id") Long id) {
 		return service.pesquisarPorId(id);
 	}
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
+	@PreAuthorize("hasAuthority('ROLE_ALTERAR_GENERO')")
 	public Genero alterar(@RequestBody @Valid Genero genero, 
 			@PathVariable("id") Long id) {
 		return service.alterar(genero, id);
@@ -68,6 +73,7 @@ public class GeneroResource {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_EXCLUIR_GENERO')")
 	public void excluir(@PathVariable("id") Long id) {
 		service.excluir(id);
 	}

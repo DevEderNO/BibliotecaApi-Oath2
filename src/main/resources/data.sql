@@ -15,7 +15,7 @@ INSERT INTO permissao (id, descricao) values (8, 'ROLE_EXCLUIR_GENERO');
 INSERT INTO permissao (id, descricao) values (9, 'ROLE_PESQUISAR_POR_ID_GENERO');
 INSERT INTO permissao (id, descricao) values (10, 'ROLE_LISTAR_GENERO');
 
--- profiles_roles ADMIN
+-- ADMIN
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1,1);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1,2);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1,3);
@@ -27,3 +27,6 @@ INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1,8);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1,9);
 INSERT INTO usuario_permissao (id_usuario, id_permissao) values (1,10);
 
+-- Usuario
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2,9);
+INSERT INTO usuario_permissao (id_usuario, id_permissao) values (2,10);
